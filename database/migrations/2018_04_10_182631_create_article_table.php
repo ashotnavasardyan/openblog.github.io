@@ -20,9 +20,9 @@ class CreateArticleTable extends Migration
             $table->string('text',100);
             $table->string('images',50);
             $table->string('desc');
-            $table->integer('user_id');
-            $table->integer('comment_id');
-            $table->integer('category_id');
+            $table->integer('user_id')->unsigned();
+            $table->integer('comment_id')->unsigned();
+            $table->integer('category_id')->unsigned();
             $table->timestamps();
         });
     }
