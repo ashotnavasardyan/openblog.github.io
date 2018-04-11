@@ -10,30 +10,16 @@ class Article extends Model
 	protected $primaryKey = 'id';
 	public $incrementing = TRUE;
 	public $timestamps = TRUE;
-	protected $fillable = ['name','text',email];//toxum enq avelacnel
-	protected $guarded = ['*'];//chenq toxum avelacnel
-	protected $dates = ['deleted_at'];
-	protected $casts = [
-		'name' => 'text'
-	];
 
 	public function user(){
-		return $this->belongsTo('App\User');
+		return $this->belongsTo('app\User'/*,'id','article_id'*/);
 	}
 
 	public function comments(){
-	    return $this->hasMany('App\Comment');
+	    return $this->hasMany('app\Comment'/*,'comment_id','id'*/);
     }
 
     public function category(){
-	    return $this->belongsTo('App\Category');
+	    return $this->belongsTo('app\Category'/*,'category_id','id'*/);
     }
-	/////////////////////////READING////////////////////////////
-	public function getNameAttribute($value){
-		return 'hello '.$value.' hello';
-	}
-	//////////////////Changing/////////////////////////////////
-	public function setNameAttribute($value){
-		return $this->attributes['name'] = ' | '.$value.' | ';
-	}
 }
