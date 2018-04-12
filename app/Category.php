@@ -10,7 +10,7 @@ class Category extends Model
     protected $fillable = ['id','name'];
 
     public function articles(){
-        return $this->hasMany('app\Article'/*,'id','category_id'*/);
+        return $this->hasMany('app\Article','id','category_id');
     }
 
 }

@@ -1,5 +1,13 @@
 @extends('layouts.site');
 
+@section('navigation')
+    {!! $navigation !!}
+@endsection
+
 @section('content')
-    {{$content}}
+    {!! $content  !!}
+@endsection
+
+@section('bar')
+    {!! $bar !!}
 @endsection
