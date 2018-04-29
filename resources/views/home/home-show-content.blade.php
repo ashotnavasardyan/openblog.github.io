@@ -1,5 +1,5 @@
 <style>
-    #answer{
+    #answer , #send{
         color: #fff;
         background: #00aeff;
         padding: 0.4em 1.5em;
@@ -59,58 +59,56 @@
             @endif
             <div class="content-form">
                 <h3>Leave a comment</h3>
-                @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                    @foreach($errors->all() as $error)
-                                <li>{{$error}}</li>
-                    @endforeach
-                        </ul>
-                    </div>
-                @endif
-                @if($status)
-                    <div class="alert alert-success">
-                        <ul>
-                            @foreach($status as $s)
-                                <li>{{$s}}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <form action="{{route('commentsend',$article->alias)}}" method="post" id="commentForm">
                     <input placeholder="Title" type="text" name="title">
                     <textarea placeholder="Message" name="text" ></textarea>
                     <input type="hidden" name="article_id" value="{{$article->id}}">
                     <input type="hidden" name="user_id" value="{{$article->user->id}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="submit" value="SEND" id="send"/>
+                    <input type="button" value="SEND" id="send"/>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<div id="testdiv">
+
+</div>
 <script>
     $(document).ready(function(){
-        /*$( "#send" ).on( "click", function( event ) {
+        $( "#send" ).on( "click", function( event ) {
             var data = $('#commentForm').serializeArray();
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET",data,true);
-            xhttp.send();
-            /*$.ajax({
+            $.ajax({
                 url:$('#commentForm').attr('action'),
                 data:data,
                 headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:'POST',
                 datatype:'JSON',
-                success: function () {
+                success: function (resp) {
+                    if(resp.status){
+                        $(".alert").remove();
+                        $(".content-form h3").after('<div class="alert alert-success">' + '</div>');
+                        resp = resp.status;
+                        for(i in resp){
+                            $('.alert-success').append('<li>'+resp[i]+'</li>');
+                        }
+                        //resp.destroy();
+                    }
+                    resp = JSON.parse(resp);
+                    if(resp.errors){
+                        $(".alert").remove();
+                        $(".content-form h3").after('<div class="alert alert-danger">' + '</div>');
+                        resp = resp.errors;
+                        for(i in resp){
+                            $('.alert-danger').append('<li>'+resp[i]+'</li>');
+                        }
+                    }
 
                 },
-                error: function () {
+                error: function (html) {
 
                 }
-                
-
             });
-        });*/
+        });
     });
 </script>

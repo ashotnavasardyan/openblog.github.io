@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -23,12 +24,16 @@ class CommentController extends Controller
             'user_id'=>'required|integer',
         ]);
         if($validator->fails()){
-            return back()->with(['errors'=>$validator->errors()]);
+
+            //return back()->with(['errors'=>$validator->errors()]);
+            $data = json_encode(['errors'=>$validator->errors()]);
+            return Response($data);
         }
         $comment = new Comment($request);
         $article = Article::find($request['article_id']);
         $article->comments()->save($comment);
 
-        return back();
+        return Response(['status'=>['Your comment was added']]);
+
     }
 }
