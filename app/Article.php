@@ -12,14 +12,14 @@ class Article extends Model
 	public $timestamps = TRUE;
 
 	public function user(){
-		return $this->belongsTo('App\User','id','article_id');
+		return $this->belongsTo(User::class);
 	}
 
 	public function comments(){
-	    return $this->hasMany('App\Comment','comment_id','id');
+	    return $this->hasMany(Comment::class);
     }
 
     public function category(){
-	    return $this->belongsTo('App\Category','category_id','id');
+	    return $this->belongsTo(Category::class);
     }
 }

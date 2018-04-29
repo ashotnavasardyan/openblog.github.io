@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $table = 'comments';
-    protected $fillable = ['*'];
+    protected $fillable = ['id','text','title','parent_id','user_id','article_id,','created_at','updated_at'];
 
     public function category(){
         return $this->belongsTo('app\Category','category_id','id');

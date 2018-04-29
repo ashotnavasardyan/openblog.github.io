@@ -4,10 +4,11 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
+
 html, body{
     font-size: 100%;
 	background-size:cover;
-	font-family: 'Oswald', sans-serif;	
+	font-family: 'Oswald', sans-serif;
 }
 body a{
 transition: 0.5s all ease;
@@ -17,7 +18,7 @@ transition: 0.5s all ease;
 -ms-transition: 0.5s all ease;
 }
 h1,h2,h3,h4,h5,h6{
-	margin:0;			   
+	margin:0;
 }
 p{
 	margin:0;
@@ -114,7 +115,7 @@ color:#00aeff;
 margin-right:0.7em;
 display:inline-block;
 text-decoration:none;
-font-family: 'Oswald', sans-serif;	
+font-family: 'Oswald', sans-serif;
 font-weight:400;
 text-transform:uppercase;
 }
@@ -450,6 +451,28 @@ margin: 10px 0;
 .content-form form textarea {
 height: 200px;
 resize: none;
+}
+#answer{
+  color: #fff;
+  background: #00aeff;
+  padding: 0.4em 1.5em;
+  text-decoration: none;
+  font-size: 0.9em;
+  display: inline-block;
+  margin-top: 1em;
+  border: none;
+  outline: none;
+  border: 1px solid  #00aeff;
+  transition: 0.5s all ease;
+  -webkit-transition: 0.5s all ease;
+  -moz-transition: 0.5s all ease;
+  -o-transition: 0.5s all ease;
+  -ms-transition: 0.5s all ease;
+}
+
+#answer:hover{
+  background: transparent;
+  color:#00aeff;
 }
 .content-form form input[type="submit"] {
 color: #fff;

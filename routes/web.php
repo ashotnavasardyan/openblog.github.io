@@ -10,4 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/','HomeController');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/{alias}','HomeController@show')->name('blogshow');
+Route::post('/{alias}','CommentController@send')->name('commentsend');
+Route::get('/login','ControllerLogin@login')->name('login');
+
+Auth::routes();
+
