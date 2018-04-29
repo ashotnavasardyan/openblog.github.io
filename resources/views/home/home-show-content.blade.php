@@ -25,6 +25,7 @@
 <div class="single">
     <div class="container">
         <div class="col-md-8 single-main">
+            <h2>{{$article->title}}</h2>
             <div class="single-grid">
                 <img src="images/{{$article->images}}" alt=""/>
                 <p>{{$article->text}}</p>
@@ -63,6 +64,7 @@
                     <input placeholder="Title" type="text" name="title">
                     <textarea placeholder="Message" name="text" ></textarea>
                     <input type="hidden" name="article_id" value="{{$article->id}}">
+                    <input type="hidden" name="article_user_name" value="{{$article->user->name}}">
                     <input type="hidden" name="user_id" value="{{$article->user->id}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="button" value="SEND" id="send"/>
@@ -92,7 +94,22 @@
                         for(i in resp){
                             $('.alert-success').append('<li>'+resp[i]+'</li>');
                         }
-                        //resp.destroy();
+                        $('.comment-list:last').after('<ul class="comment-list">\n' +
+                            '                <li><img src="images/avatar.png" class="img-responsive" alt="">\n' +
+                            '                    <div class="desc">\n' +
+                            '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+data[3].value+'</a></p>\n' +
+                            '                        <br>\n' +
+                            '                        <p>Title:'+data[0].value+'</p>\n' +
+                            '                        <br>\n' +
+                            '                        <p>'+data[1].value+'</p>\n' +
+                            '                        <br>\n' +
+                            '                        <input type="submit" name="answer" value="ANSWER" id="answer">\n' +
+                            '                    </div>\n' +
+                            '                    <div class="clearfix"></div>\n' +
+                            '                </li>\n' +
+                            '            </ul>\n')
+                        $('#commentForm textarea').val('');
+                        $('#commentForm input[name="title"]').val('');
                     }
                     resp = JSON.parse(resp);
                     if(resp.errors){

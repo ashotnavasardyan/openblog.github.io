@@ -30,7 +30,6 @@ class HomeController extends Controller
         $article = Article::where('alias',$alias)->first();
         $comments = $article->comments;
         $title = $article->title;
-        $status = [];
         return view('home.home-show',compact('article','menus','categories','title','comments','status'));
     }
 }

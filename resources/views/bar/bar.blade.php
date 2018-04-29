@@ -1,4 +1,9 @@
-<div class="col-md-4 content-right">
+<style>
+    #categories{
+        float: right;
+    }
+</style>
+<div class="col-md-4 content-right" id="categories">
     <div class="categories">
         <h3>CATEGORIES</h3>
         <ul>

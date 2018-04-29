@@ -42,15 +42,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!---header---->
 <!---start-top-nav---->
 @include('layouts.navbar.navbar');
+@include('bar.bar');
 <!---//End-top-nav---->
 <!--/header-->
 <div class="content">
     <div class="container">
+
         <div class="content-grids">
             @yield('content');
-            @include('bar.bar');
+
+
+
         </div>
+
     </div>
 </div>
+
 @include('layouts.footer.footer');
 <!---->
