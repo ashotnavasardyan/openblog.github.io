@@ -1,5 +1,5 @@
 <style>
-    #answer , #send{
+    input[name="answer"] , #send{
         color: #fff;
         background: #00aeff;
         padding: 0.4em 1.5em;
@@ -17,7 +17,7 @@
         -ms-transition: 0.5s all ease;
     }
 
-    #answer:hover{
+    input[name="answer"]:hover{
         background: transparent;
         color:#00aeff;
     }
@@ -39,25 +39,34 @@
                     <div class="clearfix"></div>
                 </li>
             </ul>
-            <h3>Comments</h3>
+            <h3 id="comcount">Comments <span>{{count($article->comments)}}</span></h3>
+            <div id="comments">
             @if($comments)
-            @foreach($comments as $comment)
+
+            @foreach($comments as $key => $comment)
             <ul class="comment-list">
+
+                <p class="key" style="float:right;">#{{++$key}}</p>
+
                 <li><img src="images/avatar.png" class="img-responsive" alt="">
                     <div class="desc">
+
+
                         <p>Comment by: <a href="#" title="Posts by admin" rel="author">{{$comment->user->name}}</a></p>
                         <br>
                         <p>Title:{{$comment->title}}</p>
                         <br>
                         <p>{{$comment->text}}</p>
                         <br>
-                        <input type="submit" name="answer" value="ANSWER" id="answer">
+                            <input type="hidden" name="parent_id" value="{{$comment->id}}">
+                            <input type="button" name="answer" value="ANSWER">
                     </div>
                     <div class="clearfix"></div>
                 </li>
             </ul>
             @endforeach
             @endif
+            </div>
             <div class="content-form">
                 <h3>Leave a comment</h3>
                 <form action="{{route('commentsend',$article->alias)}}" method="post" id="commentForm">
@@ -78,8 +87,18 @@
 </div>
 <script>
     $(document).ready(function(){
-        $( "#send" ).on( "click", function( event ) {
+
+        $("input[name='answer']").on("click",function (event) {
+            //var data = $('#comment').serializeArray();
+            //var data = this.prev;
+           // console.log(data);
+            //$('#commentForm').append( '<input type="hidden" name="parent_id" value='+this.parent_id+'>');
+        });
+
+        $( "#send" ).on( "click", function( event ){
+
             var data = $('#commentForm').serializeArray();
+            var key =  $('#comcount span').text();
             $.ajax({
                 url:$('#commentForm').attr('action'),
                 data:data,
@@ -88,13 +107,15 @@
                 datatype:'JSON',
                 success: function (resp) {
                     if(resp.status){
+                        key++;
                         $(".alert").remove();
                         $(".content-form h3").after('<div class="alert alert-success">' + '</div>');
                         resp = resp.status;
                         for(i in resp){
                             $('.alert-success').append('<li>'+resp[i]+'</li>');
                         }
-                        $('.comment-list:last').after('<ul class="comment-list">\n' +
+                        $('#comments').append('<ul class="comment-list">\n' +
+                            '<p style="float:right;">'+'#'+key+'</p>'+
                             '                <li><img src="images/avatar.png" class="img-responsive" alt="">\n' +
                             '                    <div class="desc">\n' +
                             '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+data[3].value+'</a></p>\n' +
@@ -110,6 +131,7 @@
                             '            </ul>\n')
                         $('#commentForm textarea').val('');
                         $('#commentForm input[name="title"]').val('');
+                        $('#comcount span').text(key);
                     }
                     resp = JSON.parse(resp);
                     if(resp.errors){

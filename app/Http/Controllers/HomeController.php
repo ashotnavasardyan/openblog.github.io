@@ -10,11 +10,6 @@ use App\Category;
 use App\Comment;
 class HomeController extends Controller
 {
-    public function __construct(){
-        $menus = Menu::all();
-        $categories = Category::all();
-    }
-
     public function index()
     {
         $menus = Menu::all();
