@@ -7,12 +7,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Personal Blog a Blogging Category Flat Bootstarp  Responsive Website Template | Home :: w3layouts</title>
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href="css/style.css" rel='stylesheet' type='text/css' />
+	<title>{{$title or 'page'}}</title>
+	<link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/css/style.css" rel='stylesheet' type='text/css' />
+	{{ csrf_field() }}
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
+	<meta name="keywords" content="Personal Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
 	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design"
 	/>
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -23,8 +24,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<!--end slider -->
 	<!--script-->
-	<script type="text/javascript" src="js/move-top.js"></script>
-	<script type="text/javascript" src="js/easing.js"></script>
+	<script type="text/javascript" src="/js/move-top.js"></script>
+	<script type="text/javascript" src="/js/easing.js"></script>
+	<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script>
+
 	<!--/script-->
 	<script type="text/javascript">
         jQuery(document).ready(function($) {
@@ -39,39 +42,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </head>
 <body>
 <!---header---->
-<div class="header">
-	<div class="container">
-		<div class="logo">
-			<a href="index.html"><img src="images/logo.jpg" title="" /></a>
-		</div>
-		<!---start-top-nav---->
-		@yield('navigation');
-		<script>
-            $("span.menu").click(function(){
-                $(".top-menu ul").slideToggle("slow" , function(){
-                });
-            });
-		</script>
-		<!---//End-top-nav---->
-	</div>
-</div>
+<!---start-top-nav---->
+@include('layouts.navbar.navbar');
+@include('bar.bar');
+<!---//End-top-nav---->
 <!--/header-->
+
 <div class="content">
 	<div class="container">
+
 		<div class="content-grids">
 			@yield('content');
 
-			@yield('bar');
 
-			<div class="clearfix"></div>
+
 		</div>
-	</div>
-</div>
-<!---->
-<div class="footer">
-	<div class="container">
-		<p>Copyrights © 2015 Blog All rights reserved | Template by <a href="http://w3layouts.com/">W3layouts</a></p>
+
 	</div>
 </div>
 
-	
+@include('layouts.footer.footer');
+<!---->

@@ -1,6 +1,6 @@
 <div class="container">
     <div class="logo">
-        <a href="{{route('home')}}"><img src="images/logo.jpg" title="" /></a>
+        <a href="{{route('home')}}"><img src="/images/logo.jpg" title="" /></a>
     </div>
 
     <div class="top-menu">

@@ -25,21 +25,21 @@
 <div class="single">
     <div class="container">
         <div class="col-md-8 single-main">
-            <h2>{{$article->title}}</h2>
+            <h2 style="color: #00aeff;margin-bottom: 20px">{{$article->title}}</h2>
             <div class="single-grid">
-                <img src="images/{{$article->images}}" alt=""/>
+                <img src="/images/{{$article->images}}" alt=""/>
                 <p>{{$article->text}}</p>
             </div>
             <ul class="comment-list">
                 <h5 class="post-author_head">This post written by <a href="#" title="Posts by admin" rel="author">{{$article->user->name}}</a></h5>
-                <li><img src="images/avatar.png" class="img-responsive" alt="">
+                <li><img src="/images/avatar.png" class="img-responsive" alt="">
                     <div class="desc">
                         <p>View all posts by: <a href="#" title="Posts by admin" rel="author">{{$article->user->name}}</a></p>
                     </div>
                     <div class="clearfix"></div>
                 </li>
             </ul>
-            <h3 id="comcount">Comments <span>{{count($article->comments)}}</span></h3>
+            <h3 id="comcount" style="color: #00aeff;">Comments <span>{{count($article->comments)}}</span></h3>
             <div id="comments">
             @if($comments)
 
@@ -48,7 +48,7 @@
 
                 <p class="key" style="float:right;">#{{++$key}}</p>
 
-                <li><img src="images/avatar.png" class="img-responsive" alt="">
+                <li><img src="/images/avatar.png" class="img-responsive" alt="">
                     <div class="desc">
 
 
@@ -116,7 +116,7 @@
                         }
                         $('#comments').append('<ul class="comment-list">\n' +
                             '<p style="float:right;">'+'#'+key+'</p>'+
-                            '                <li><img src="images/avatar.png" class="img-responsive" alt="">\n' +
+                            '                <li><img src="/images/avatar.png" class="img-responsive" alt="">\n' +
                             '                    <div class="desc">\n' +
                             '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+data[3].value+'</a></p>\n' +
                             '                        <br>\n' +

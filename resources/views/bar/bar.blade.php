@@ -1,3 +1,4 @@
+@if($categories)
 <style>
     #categories{
         float: right;
@@ -14,3 +15,4 @@
     </div>
     <div class="clearfix"></div>
 </div>
+@endif

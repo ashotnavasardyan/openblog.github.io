@@ -28,3 +28,4 @@ class HomeController extends Controller
         return view('home.home-show',compact('article','menus','categories','title','comments','status'));
     }
 }
+
