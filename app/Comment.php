@@ -14,10 +14,10 @@ class Comment extends Model
     }
 
     public function user(){
-        return $this->belongsTo('app\User','user_id','id');
+        return $this->belongsTo(User::class);
     }
 
     public function article(){
-        return $this->belongsTo('app\Article','article_id','id');
+        return $this->belongsTo(Article::class,'article_id','id');
     }
 }

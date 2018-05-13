@@ -12,7 +12,6 @@ class AboutController extends Controller
     public function index()
     {
         $menus = Menu::all();
-        $categories = FALSE;
         $content = About::all()[0]->only('content')['content'];
         $title = 'About';
         return view('about.about',compact('articles','menus','categories','title','content'));

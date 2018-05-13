@@ -1,5 +1,6 @@
-@extends('layouts.app');
+@extends('layouts.site')
 @section('content')
+    @if(isset($content))
     <style>
         li {
             font-size: 0.9em;
@@ -33,6 +34,6 @@
             {!!$content!!}
         </div>
     </div>
-
+    @endif
 @endsection
 

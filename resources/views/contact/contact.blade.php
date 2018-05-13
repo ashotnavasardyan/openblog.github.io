@@ -1,4 +1,4 @@
-@extends('layouts.site');
+@extends('layouts.site')
 @section('content')
-    @include('contact.contact_content');
+    @include('contact.contact_content')
 @endsection

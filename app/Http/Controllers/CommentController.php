@@ -14,6 +14,8 @@ class CommentController extends Controller
     public function send(Request $request){
 
         $request = $request->except('_token');
+        $user_id = Auth::user()->id;
+        $request['user_id'] = $user_id;
         //if(!Auth::check()){
           //  abort(404);
         //}
@@ -31,7 +33,7 @@ class CommentController extends Controller
         $article = Article::find($request['article_id']);
         $article->comments()->save($comment);
 
-        return Response(['status'=>['Your comment was added']]);
+        return Response(['status'=>['Your comment was added'],'user_name'=>Auth::user()->name]);
 
     }
 }

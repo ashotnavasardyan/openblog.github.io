@@ -11,7 +11,6 @@ class ContactController extends Controller
 {
     public function index(){
         $menus = Menu::all();
-        $categories = Category::all();
 
         return view('contact.contact',compact('menus','categories'));
     }

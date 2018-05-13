@@ -28,7 +28,7 @@
             <h2 style="color: #00aeff;margin-bottom: 20px">{{$article->title}}</h2>
             <div class="single-grid">
                 <img src="/images/{{$article->images}}" alt=""/>
-                <p>{{$article->text}}</p>
+                <p>{!! $article->text !!}</p>
             </div>
             <ul class="comment-list">
                 <h5 class="post-author_head">This post written by <a href="#" title="Posts by admin" rel="author">{{$article->user->name}}</a></h5>
@@ -52,7 +52,7 @@
                     <div class="desc">
 
 
-                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">{{$comment->user->name}}</a></p>
+                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">{{$comment->user->name}}</a> / {{$comment->created_at}}</p>
                         <br>
                         <p>Title:{{$comment->title}}</p>
                         <br>
@@ -73,8 +73,6 @@
                     <input placeholder="Title" type="text" name="title">
                     <textarea placeholder="Message" name="text" ></textarea>
                     <input type="hidden" name="article_id" value="{{$article->id}}">
-                    <input type="hidden" name="article_user_name" value="{{$article->user->name}}">
-                    <input type="hidden" name="user_id" value="{{$article->user->id}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="button" value="SEND" id="send"/>
                 </form>
@@ -110,15 +108,15 @@
                         key++;
                         $(".alert").remove();
                         $(".content-form h3").after('<div class="alert alert-success">' + '</div>');
-                        resp = resp.status;
-                        for(i in resp){
-                            $('.alert-success').append('<li>'+resp[i]+'</li>');
+                        var stat = resp.status;
+                        for(i in stat){
+                            $('.alert-success').append('<li>'+stat[i]+'</li>');
                         }
                         $('#comments').append('<ul class="comment-list">\n' +
                             '<p style="float:right;">'+'#'+key+'</p>'+
                             '                <li><img src="/images/avatar.png" class="img-responsive" alt="">\n' +
                             '                    <div class="desc">\n' +
-                            '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+data[3].value+'</a></p>\n' +
+                            '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+resp.user_name+'</a></p>\n' +
                             '                        <br>\n' +
                             '                        <p>Title:'+data[0].value+'</p>\n' +
                             '                        <br>\n' +

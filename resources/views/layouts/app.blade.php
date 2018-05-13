@@ -8,8 +8,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
     <title>{{$title or 'page'}}</title>
+    <link rel="shortcut icon" type="image/ico" href="/images/1_Primary_logo_on_transparent_97x86.ico"/>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/css/style.css" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/css/site.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     {{ csrf_field() }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

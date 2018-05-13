@@ -56,6 +56,7 @@ font-family: 'Oswald', sans-serif;
 width: 87%;
 background:#dbdbdb;
 }
+
 .search form input[type="submit"] {
 background: url('../images/search.png')no-repeat 0px 0px;
 width: 20px;
@@ -98,6 +99,8 @@ width:60%;
 }
 .content-grids {
 margin-top: 4em;
+  width: 950px;
+  float: right;
 }
 .post-info{
 background:#fff;
@@ -129,6 +132,7 @@ font-size:0.9em;
 line-height:1.5em;
 margin-bottom:1em;
 }
+
 .post-info a span {
 background: url(../images/more.png) no-repeat 0px 3px;
 height: 18px;
@@ -334,6 +338,10 @@ height: 200px;
 width: 98%;
 margin-right: 0%;
 }
+
+
+
+
 .contact-details form input[type="text"]:nth-child(2),.contact-details form input[type="text"]:nth-child(4){
 margin-right:0%;
 }
@@ -928,4 +936,22 @@ height: 135px;
 .content-form h3 {
 font-size: 1.1em;
 }
+
 }
+.right_bar{
+width: 170px;
+margin-top: 25px;
+border-right: 1px solid #d2d2d2;
+}
+.right_bar img{
+width: 150px;
+}
+.right_bar li{
+margin-top: 10px;
+list-style-image: url(images/icon3.png);
+}
+.task{
+margin-left: 21px;
+margin-top: 16px;
+}
+
