@@ -30,6 +30,12 @@
     .table{
         display: block !important;
     }
+    #save{
+        margin-top: 15px;
+        margin-bottom: 15px;
+        font-size: 22px;
+        font-family: Poppins-Regular;
+    }
 </style>
 <div class="single">
     <div class="container">
@@ -40,6 +46,9 @@
                 <p>{!! $article->text !!}</p>
             </div>
             <h3 id="comcount" style="color: #00aeff;">Comments <span>{{count($article->comments)}}</span></h3>
+            <form method="post" action="{{route('comment_show')}}">
+            <input type="button" value="SAVE" class="btn btn-success btn-block" id="save">
+                <input type="hidden" name="article_alias" value="{{$article->id}}">
             {{--<div id="comments">--}}
                 {{--@if($comments)--}}
 
@@ -93,17 +102,21 @@
                                         <p>{{$comment->user->name}}</p>
                                     </div>
                                     <div class="cell" data-title="Job Title">
-                                        <input type="checkbox" checked>
+
+                                        <input type="checkbox" {{($comment->show==1)?"checked":""}} name="box" value="['show'=>{{$comment->show}},'id'=>{{$comment->id}}]" >
+
+
                                     </div>
                                     <div class="cell" data-title="Job Title">
                                         <form method="post" action="{{route('comment_delete',$comment->id)}}">
                                             {{csrf_field()}}
-                                            <input type="button" value="Delete" class="btn btn-danger">
+                                            <input type="button" value="Delete" class="btn btn-danger" id="{{$comment->id}}">
                                         </form>
                                     </div>
                                 </div>
                         @endforeach
                         </div>
+            </form>
                     </div>
                 </div>
             </div>
@@ -113,9 +126,9 @@
 <script>
     $('input[value="Delete"]').on('click',function(event){
         var comcount = $('#comcount span').text();
-        var data = $('input[value="Delete"]').parent().serializeArray();
+        var data = $(event.target).parent().serializeArray();
         $.ajax({
-            url:$('input[value="Delete"]').parent().attr('action'),
+            url:$(event.target).parent().attr('action'),
             data:data,
             headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type:'POST',
@@ -126,10 +139,37 @@
                 $(event.target).parents().eq(2).after('<div style="margin-bottom: -2px;" class="alert alert-success" ><p style="text-align: center;">'+obj.status+'</p></div>');
                 $(event.target).parents().eq(2).remove();
                 $('#comcount span').text(comcount);
-                $(".alert-success").fadeOut();
-                $(".alert-success").fadeOut("slow");
-                $(".alert-success").fadeOut(18000);
+                $(".alert-success").fadeOut(2000);
+
             }
         });
+    });
+    $('input[type="checkbox"]').on('click',function(event){
+        var show = $(event.target).attr('value');
+        if(show==1){
+            $(event.target).attr('value',0);
+        }
+        else{
+            $(event.target).attr('value',1);
+        }
+    });
+    $('#save ,input[name="id"]').on('click',function(event){
+        var data  = $('input[name="box"]');
+        var data = data.serializeArray();
+        data.push($('input[name="article_alias"]').val());
+        console.log(data);
+        $.ajax({
+            url:$(event.target).parent().attr('action'),
+            data:data,
+            headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type:'POST',
+            datatype:'JSON',
+            success:function(resp){
+                var resp = JSON.parse(resp);
+                console.log(resp);
+
+            }
+        });
+
     });
 </script>

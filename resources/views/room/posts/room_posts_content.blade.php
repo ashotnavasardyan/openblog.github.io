@@ -90,6 +90,7 @@
 </div>
     <script>
         $(document).ready(function(){
+            $(".alert-success").fadeOut(2000);
             $('input[value="Delete"]').on('click',function(event){
                 var data = $(this).parent().serializeArray();
                 $.ajax({
@@ -103,10 +104,7 @@
                         $('.limiter').before('<div class="alert alert-success">'
                                 +resp.status+
                            ' </div>');
-                        $(".alert-success").fadeOut();
-                        $(".alert-success").fadeOut("slow");
-                        $(".alert-success").fadeOut(18000);
-
+                        $(".alert-success").fadeOut(2000);
                     }
 
                 });

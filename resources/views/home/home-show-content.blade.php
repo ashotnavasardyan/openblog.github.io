@@ -130,6 +130,7 @@
                         $('#commentForm textarea').val('');
                         $('#commentForm input[name="title"]').val('');
                         $('#comcount span').text(key);
+                        $(".alert-success").fadeOut(2000);
                     }
                     resp = JSON.parse(resp);
                     if(resp.errors){
@@ -139,6 +140,7 @@
                         for(i in resp){
                             $('.alert-danger').append('<li>'+resp[i]+'</li>');
                         }
+
                     }
 
                 },
