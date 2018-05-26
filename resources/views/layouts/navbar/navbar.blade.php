@@ -12,6 +12,13 @@
             -moz-transition: 0.5s all;
             -o-transition: 0.5s all;
         }
+        .top-menu li{
+            font-size: 20px;
+        }
+        .container {
+            width: 1100px;
+            margin-bottom: 17px;
+        }
     </style>
 <div class="container">
     <div class="logo">
@@ -29,7 +36,7 @@
         <ul>
             @if($menus)
                 @foreach($menus as $menu)
-                    <li><a href="{{$menu->path}}")}}>{{$menu->title}}</a></li>
+                    <li><a href="{{env('PUBLIC_PATH').$menu->path}}">{{$menu->title}}</a></li>
                 @endforeach
             @endif
 

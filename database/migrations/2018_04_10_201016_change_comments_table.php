@@ -27,7 +27,8 @@ class ChangeCommentsTable extends Migration
     public function down()
     {
         Schema::table('comments', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
+            $table->dropColumn('article_id');
         });
     }
 }

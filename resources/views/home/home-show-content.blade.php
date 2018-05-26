@@ -21,6 +21,27 @@
         background: transparent;
         color:#00aeff;
     }
+    .content-grids{
+        float: none !important;
+
+    }
+    .single-grid * {
+        margin-top: 35px;
+        white-space: pre-line;
+    }
+    td,th{
+        padding: 8px;
+        text-align: center;
+    }
+    table{
+        margin: auto;
+    }
+    .single{
+        border-top: none;
+    }
+    .content-grids {
+        margin-top:0 !important;
+    }
 </style>
 <div class="single">
     <div class="container">
@@ -83,6 +104,10 @@
 <div id="testdiv">
 
 </div>
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-identifier="item_1" data-share_enabled="false" data-share_size="small"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
 <script>
     $(document).ready(function(){
 

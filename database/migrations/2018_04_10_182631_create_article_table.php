@@ -16,13 +16,12 @@ class CreateArticleTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('alias',70);
-            $table->text('title',75);
-            $table->string('text',100);
+            $table->string('title',75);
+            $table->text('text');
             $table->string('images',50);
             $table->string('desc');
             $table->integer('user_id')->unsigned();
-            $table->integer('comment_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->default(0);
             $table->timestamps();
         });
     }
@@ -34,6 +33,7 @@ class CreateArticleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+            Schema::dropIfExists('articles');
+
     }
 }

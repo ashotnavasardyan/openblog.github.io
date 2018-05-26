@@ -5,10 +5,15 @@
     }
     .content-grids{
         float:none !important;
+        width: 1050px !important;
     }
     .content-grid-info{
         width: 120%;
     }
+    .top-menu li{
+        font-size: 20px;
+    }
+
 </style>
         <div class="col-md-8 content-main">
             <div class="content-grid">

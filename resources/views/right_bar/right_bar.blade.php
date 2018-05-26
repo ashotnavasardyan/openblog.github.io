@@ -22,12 +22,12 @@
         }
     </style>
 <div class="right_bar">
-    <img src="/images/avatar.png">
+    <img src="/images/{{$user->image}}">
     <p>{{$user->name}}</p>
     <div class="task">
         <ul>
             @foreach($rightbar as $item)
-            <li><a href="{{$item->path}}">{{$item->title}}</a></li>
+            <li><a href="{{env('PUBLIC_PATH').$item->path}}">{{$item->title}}</a></li>
             @endforeach
         </ul>
     </div>

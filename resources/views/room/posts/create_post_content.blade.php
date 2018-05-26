@@ -58,11 +58,19 @@
     .help-block{
         color:red;
     }
-
+    .top-menu li{
+        font-size: 20px;
+    }
 
 
     .contact-details form input[type="text"]:nth-child(2),.contact-details form input[type="text"]:nth-child(4){
         margin-right:0%;
+    }
+    .container {
+        width: 1170px;
+    }
+    .content-grids{
+        float: right !important;
     }
 </style>
 

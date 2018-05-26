@@ -14,5 +14,7 @@ Route::group(['prefix'=>'myroom','middleware'=>'auth'],function (){
     Route::get('/','RoomController@index')->name('room');
     Route::resource('posts','RoomPostsController');
     Route::post('/comment/{id}','PostCommentDelete@delete')->name('comment_delete');
-    Route::post('/comments','ShowCommentController@change')->name('comment_show');
+    Route::resource('comments','RoomCommentsController');
+    Route::get('/settings','RoomSettingsController@index')->name('settingshome');
+    Route::post('/changesets/{id}','RoomUpdateSettingsController@index')->name('settings');
 });

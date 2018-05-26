@@ -2,7 +2,9 @@
     <style>
         #categories{
             float: right;
+            margin-top: 4em;
         }
+
     </style>
     <div class="col-md-4 content-right" id="categories">
         <div class="categories">

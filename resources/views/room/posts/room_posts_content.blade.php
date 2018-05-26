@@ -20,7 +20,15 @@
             width:200px;
             height:100px;
         }
-
+        .top-menu li{
+            font-size: 20px;
+        }
+        .container {
+            width: 1170px;
+        }
+        .content-grids{
+            float: right !important;
+        }
     </style>
     <h1>My Posts</h1>
     @if(session('status'))

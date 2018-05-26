@@ -15,7 +15,6 @@ class ChangeArticleTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('comment_id')->references('id')->on('comments');
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
@@ -28,7 +27,8 @@ class ChangeArticleTable extends Migration
     public function down()
     {
         Schema::table('articles', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
+            $table->dropColumn('category_id');
         });
     }
 }

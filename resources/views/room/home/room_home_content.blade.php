@@ -10,7 +10,7 @@
         text-transform:uppercase;
         margin-bottom: 7px;
     }
-    li {
+    #task li {
         margin: 10px;
         list-style-image: url(images/icon3.png);
     }
@@ -23,10 +23,13 @@
         float: left;
         width: 500px;
     }
+    .top-menu li{
+        font-size: 20px;
+    }
 </style>
 <h4>My Room</h4>
 <p style="font-size: 30px;">What you can do here?</p>
-<ul>
+<ul id="task">
     <li>Add or Edit your Posts</li>
     <li>Add or Edit your Comments</li>
     <li>See the articles you liked</li>

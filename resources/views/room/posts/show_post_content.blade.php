@@ -36,6 +36,15 @@
         font-size: 22px;
         font-family: Poppins-Regular;
     }
+    .top-menu li{
+        font-size: 20px;
+    }
+    .container {
+        width: 1170px;
+    }
+    .content-grids{
+        float: right !important;
+    }
 </style>
 <div class="single">
     <div class="container">
@@ -46,7 +55,7 @@
                 <p>{!! $article->text !!}</p>
             </div>
             <h3 id="comcount" style="color: #00aeff;">Comments <span>{{count($article->comments)}}</span></h3>
-            <form method="post" action="{{route('comment_show')}}">
+            {{--<form method="post" action="{{route('comment_show')}}">--}}
             <input type="button" value="SAVE" class="btn btn-success btn-block" id="save">
                 <input type="hidden" name="article_alias" value="{{$article->id}}">
             {{--<div id="comments">--}}
@@ -95,19 +104,23 @@
                         </div>
                         @foreach($comments as $comment)
                                 <div class="row">
-                                    <div class="cell" data-title="Age">
+                                    <div class="cell">
                                         <p>{{$comment->text}}</p>
                                     </div>
-                                    <div class="cell" data-title="Full Name">
+                                    <div class="cell">
                                         <p>{{$comment->user->name}}</p>
                                     </div>
-                                    <div class="cell" data-title="Job Title">
-
-                                        <input type="checkbox" {{($comment->show==1)?"checked":""}} name="box" value="['show'=>{{$comment->show}},'id'=>{{$comment->id}}]" >
-
-
+                                    <div class="cell">
+                                        <input type="checkbox"  name="box" value="1" checked>
                                     </div>
-                                    <div class="cell" data-title="Job Title">
+
+                                    {{--<div class="cell" data-title="Job Title">--}}
+
+                                        {{--<input type="checkbox" {{($comment->show==1)?"checked":""}} name="box" value="['show'=>{{$comment->show}},'id'=>{{$comment->id}}]" >--}}
+
+
+                                    {{--</div>--}}
+                                    <div class="cell">
                                         <form method="post" action="{{route('comment_delete',$comment->id)}}">
                                             {{csrf_field()}}
                                             <input type="button" value="Delete" class="btn btn-danger" id="{{$comment->id}}">
@@ -116,7 +129,7 @@
                                 </div>
                         @endforeach
                         </div>
-            </form>
+            {{--</form>--}}
                     </div>
                 </div>
             </div>
@@ -139,37 +152,40 @@
                 $(event.target).parents().eq(2).after('<div style="margin-bottom: -2px;" class="alert alert-success" ><p style="text-align: center;">'+obj.status+'</p></div>');
                 $(event.target).parents().eq(2).remove();
                 $('#comcount span').text(comcount);
-                $(".alert-success").fadeOut(2000);
+                $(".alert-success").fadeOut(2000,function () {
+                    $(".alert-success").remove();
+                });
+
 
             }
         });
     });
-    $('input[type="checkbox"]').on('click',function(event){
-        var show = $(event.target).attr('value');
-        if(show==1){
-            $(event.target).attr('value',0);
-        }
-        else{
-            $(event.target).attr('value',1);
-        }
-    });
-    $('#save ,input[name="id"]').on('click',function(event){
-        var data  = $('input[name="box"]');
-        var data = data.serializeArray();
-        data.push($('input[name="article_alias"]').val());
-        console.log(data);
-        $.ajax({
-            url:$(event.target).parent().attr('action'),
-            data:data,
-            headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            type:'POST',
-            datatype:'JSON',
-            success:function(resp){
-                var resp = JSON.parse(resp);
-                console.log(resp);
+//    $('input[type="checkbox"]').on('click',function(event){
+//        var show = $(event.target).attr('value');
+//        if(show==1){
+//            $(event.target).attr('value',0);
+//        }
+//        else{
+//            $(event.target).attr('value',1);
+//        }
+//    });
+//    $('#save ,input[name="id"]').on('click',function(event){
+//        var data  = $('input[name="box"]');
+//        var data = data.serializeArray();
+//        data.push($('input[name="article_alias"]').val());
+//        console.log(data);
+//        $.ajax({
+//            url:$(event.target).parent().attr('action'),
+//            data:data,
+//            headers:{'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+//            type:'POST',
+//            datatype:'JSON',
+//            success:function(resp){
+//                var resp = JSON.parse(resp);
+//                console.log(resp);
+//
+//            }
+//        });
 
-            }
-        });
-
-    });
+//    });
 </script>

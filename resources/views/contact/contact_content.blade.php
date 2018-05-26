@@ -21,6 +21,19 @@
         background: transparent;
         color:#00aeff;
     }
+    .content-grids{
+        float: none !important;
+
+    }
+    .top-menu li{
+        font-size: 20px;
+    }
+    .contact-content{
+        border-top: none;
+    }
+    .content-grids{
+        margin: 0;
+    }
 </style>
 <div class="contact-content">
     <div class="container">

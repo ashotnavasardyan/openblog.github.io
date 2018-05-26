@@ -28,6 +28,16 @@
             margin: 0 0 10px 20px;
             font-family: 'Oswald', sans-serif;
         }
+        .content-grids{
+            float: none !important;
+            margin: 0;
+        }
+        .top-menu li{
+            font-size: 20px;
+        }
+        .about-content{
+            border-top: none;
+        }
     </style>
     <div class="about-content">
         <div class="container">
