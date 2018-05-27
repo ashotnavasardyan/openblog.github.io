@@ -44,6 +44,22 @@
     }
     .content-grids{
         float: right !important;
+    }.single-grid * {
+         margin-top: 35px;
+         white-space: pre-line;
+     }
+    td,th{
+        padding: 8px;
+        text-align: center;
+    }
+    table{
+        margin: auto;
+    }
+    .single{
+        border-top: none;
+    }
+    .content-grids {
+        margin-top:0 !important;
     }
 </style>
 <div class="single">
@@ -108,7 +124,7 @@
                                         <p>{{$comment->text}}</p>
                                     </div>
                                     <div class="cell">
-                                        <p>{{$comment->user->name}}</p>
+                                        <a href="{{route('user',$article->user->id)}}" style="font-size: 15px"><p>{{$comment->user->name}}</p></a>
                                     </div>
                                     <div class="cell">
                                         <input type="checkbox"  name="box" value="1" checked>

@@ -23,7 +23,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'alias'=>'required|min:5|max:70|unique:articles,alias',
+            'alias'=>'required|max:70|unique:articles,alias',
             'title'=>'required|min:5|max:100',
             'text'=>'required|min:70|max:4000',
             'desc'=>'required|min:20|max:255',

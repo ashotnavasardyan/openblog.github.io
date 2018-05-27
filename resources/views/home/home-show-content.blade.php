@@ -53,7 +53,7 @@
             </div>
             <ul class="comment-list">
                 <h5 class="post-author_head">This post written by <a href="#" title="Posts by admin" rel="author">{{$article->user->name}}</a></h5>
-                <li><img src="/images/avatar.png" class="img-responsive" alt="">
+                <li><img src="/images/{{$article->user->image}}" class="img-responsive" alt="">
                     <div class="desc">
                         <p>View all posts by: <a href="#" title="Posts by admin" rel="author">{{$article->user->name}}</a></p>
                     </div>
@@ -69,7 +69,7 @@
 
                 <p class="key" style="float:right;">#{{++$key}}</p>
 
-                <li><img src="/images/avatar.png" class="img-responsive" alt="">
+                <li><img src="/images/{{$comment->user->image}}" class="img-responsive" alt="">
                     <div class="desc">
 
 
@@ -130,6 +130,7 @@
                 datatype:'JSON',
                 success: function (resp) {
                     if(resp.status){
+                        console.log(resp.image);
                         key++;
                         $(".alert").remove();
                         $(".content-form h3").after('<div class="alert alert-success">' + '</div>');
@@ -137,9 +138,9 @@
                         for(i in stat){
                             $('.alert-success').append('<li>'+stat[i]+'</li>');
                         }
-                        $('#comments').append('<ul class="comment-list">\n' +
+                        $('#comments').append('<ul class="comment-list">'+
                             '<p style="float:right;">'+'#'+key+'</p>'+
-                            '                <li><img src="/images/avatar.png" class="img-responsive" alt="">\n' +
+                            '                <li><img src="/images/'+resp.image+'" class="img-responsive" alt="">\n' +
                             '                    <div class="desc">\n' +
                             '                        <p>Comment by: <a href="#" title="Posts by admin" rel="author">'+resp.user_name+'</a></p>\n' +
                             '                        <br>\n' +

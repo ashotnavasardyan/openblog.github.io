@@ -33,7 +33,7 @@ class CommentController extends Controller
         $article = Article::find($request['article_id']);
         $article->comments()->save($comment);
 
-        return Response(['status'=>['Your comment was added'],'user_name'=>Auth::user()->name]);
+        return Response(['status'=>['Your comment was added'],'user_name'=>Auth::user()->name,'image'=>Auth::user()->image]);
 
     }
 }

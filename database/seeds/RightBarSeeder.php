@@ -19,8 +19,8 @@ class RightBarSeeder extends Seeder
                 'path' => 'myroom/comments'
             ],
             [
-                'title' => 'My Likes',
-                'path' => 'myroom/likes'
+                'title' => 'My Subscribes',
+                'path' => 'myroom/subscribes'
             ],
             [
                 'title' => 'Account Settings',

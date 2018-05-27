@@ -11,7 +11,10 @@
             <h3>CATEGORIES</h3>
             <ul>
                 @foreach($categories as $category)
-                    <li><a href="#">{{$category->name}}</a></li>
+                    @if($category->name=="none")
+                        @continue
+                    @endif
+                    <li><a href="{{route('category',$category->alias)}}">{{$category->name}}</a></li>
                 @endforeach
             </ul>
         </div>

@@ -43,7 +43,7 @@
         </div>
         <div class="contact-details" id="contact">
             <form action="{{route('contactsend')}}" method="post" id="messageForm">
-                <input type="text" name="name" placeholder="Name"/>
+                 <input type="text" name="name" placeholder="Name"/>
                 <input type="text" name="email" placeholder="Email"/>
                 <input type="text" name="phone" placeholder="Phone"/>
                 <input type="text" name="city" placeholder="City Name"/>
