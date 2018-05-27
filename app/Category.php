@@ -12,5 +12,8 @@ class Category extends Model
     public function articles(){
         return $this->hasMany('app\Article','id','category_id');
     }
+    public function users(){
+        return $this->belongsToMany('app\Users','user_category','category_id','user_id');
+    }
 
 }

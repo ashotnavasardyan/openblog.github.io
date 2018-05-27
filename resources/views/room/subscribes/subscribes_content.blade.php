@@ -1,8 +1,6 @@
-@isset($comments)
+@isset($subscribes)
     <style>
-        .cell{
-            width: 25% !important;
-        }
+
         h1  {
             color:#00aeff;
             margin:5px;
@@ -31,8 +29,14 @@
         .content-grids{
             float: right !important;
         }
+        #subscribe{
+            text-transform: uppercase;
+        }
+        .cell{
+            width: 33% !important;
+        }
     </style>
-    <h1>My Comments</h1>
+    <h1>My Subscribes</h1>
     @if(session('status'))
         <div class="alert alert-success">
             {{session('status')}}
@@ -43,45 +47,30 @@
             <div class="wrap-table100">
                 <div class="table">
                     <div class="row header">
+
                         <div class="cell">
-                            <h4>Post</h4>
+                            <h4>Category</h4>
                         </div>
                         <div class="cell">
-                            <h4>Title</h4>
+                            <h4>Alias</h4>
                         </div>
                         <div class="cell">
-                            <h4>Comment</h4>
-                        </div>
-                        <div class="cell">
-                            <h4>Edit</h4>
-                        </div>
-                        <div class="cell">
-                            <h4>Delete</h4>
+                            <h4>Subscribe</h4>
                         </div>
                     </div>
-                    @foreach($comments as $comment)
+                    @foreach($subscribes as $subscribe)
 
                         <div class="row">
                             <div class="cell">
-                                <a href="{{route('blogshow',$comment->article->alias)}}"><p>{{$comment->article->title}}</p></a>
-                            </div>
-
-                            <div class="cell">
-                                <p>{{$comment->title}}</p>
+                                <a href="{{route('category',$subscribe->alias)}}"><p>{{$subscribe->name}}</p></a>
                             </div>
                             <div class="cell">
-                                <p>{{str_limit($comment->text,70)}}</p>
+                                <p>{{$subscribe->alias}}</p>
                             </div>
                             <div class="cell">
-                                <form action="{{route('comments.edit',$comment->id)}}">
-                                    <input type="submit" value="Edit" class="btn btn-success">
-                                </form>
-                            </div>
-                            <div class="cell" data-title="Job Title">
-                                <form method="post" action="{{route('comments.destroy',$comment->id)}}" id="eleteForm" >
-                                    {{ method_field('DELETE') }}
+                                <form method="post" action="{{route('unsubscribe',$subscribe->alias)}}" id="eleteForm" >
                                     {{ csrf_field() }}
-                                    <input type="button" value="Delete" class="btn btn-danger">
+                                    <input type="button" value="unsubscribe" class="btn btn-danger" id="subscribe">
                                 </form>
                             </div>
                         </div>
@@ -93,7 +82,7 @@
     <script>
         $(document).ready(function(){
             $(".alert-success").fadeOut(2000);
-            $('input[value="Delete"]').on('click',function(event){
+            $('#subscribe').on('click',function(event){
                 var data = $(this).parent().serializeArray();
                 $.ajax({
                     url:$(this).parent().attr('action'),

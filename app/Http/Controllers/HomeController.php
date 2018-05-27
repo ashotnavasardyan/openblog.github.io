@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Menu;
 use App\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Comment;
 class HomeController extends Controller
 {
