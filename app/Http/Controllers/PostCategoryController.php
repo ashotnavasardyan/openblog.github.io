@@ -33,10 +33,16 @@ class PostCategoryController extends Controller
             $category = Category::where('alias', $alias)->first();
             $user = Auth::user();
             $user->categories()->detach($category->id);
+            $users = count($category->users);
+            $category->followers = $users;
+            $category->save();
         } else {
             $category = Category::where('alias', $alias)->first();
             $user = Auth::user();
             $user->categories()->attach($category->id);
+            $users = count($category->users);
+            $category->followers = $users;
+            $category->save();
         }
         return back();
     }

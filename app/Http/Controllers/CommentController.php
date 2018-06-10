@@ -16,24 +16,22 @@ class CommentController extends Controller
         $request = $request->except('_token');
         $user_id = Auth::user()->id;
         $request['user_id'] = $user_id;
-        //if(!Auth::check()){
-          //  abort(404);
-        //}
+
         $validator = Validator::make($request, [
-            'title'=>'required|max:25',
-            'text' => 'required|max:255',
+            'title'=>'required|max:25|min:5',
+            'text' => 'required|max:255|min:5',
             'article_id'=>'required|integer',
             'user_id'=>'required|integer',
         ]);
         if($validator->fails()){
-            $data = json_encode(['errors'=>$validator->errors()]);
-            return Response($data);
+            return back()->with('errors',$validator->errors());
         }
         $comment = new Comment($request);
         $article = Article::find($request['article_id']);
         $article->comments()->save($comment);
+        $comments = Comment::where('article_id',$request['article_id'])->get();
 
-        return Response(['status'=>['Your comment was added'],'user_name'=>Auth::user()->name,'image'=>Auth::user()->image]);
-
+//        return Response(,'user_name'=>Auth::user()->name,'image'=>Auth::user()->image,'comments'=>$comments]);
+        return back()->with('status','Your comment was added');
     }
 }

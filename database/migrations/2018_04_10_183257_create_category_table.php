@@ -16,6 +16,8 @@ class CreateCategoryTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',50);
+            $table->string('alias',50);
+            $table->integer('followers')->default(0);
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateCategoryTable extends Migration
      */
     public function down()
     {
-//        Schema::dropIfExists('categories');
+        Schema::dropIfExists('categories');
     }
 }

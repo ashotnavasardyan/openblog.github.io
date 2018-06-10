@@ -57,6 +57,9 @@
                         <div class="cell">
                             <h4>Subscribe</h4>
                         </div>
+                        <div class="cell">
+                            <h4>Followers</h4>
+                        </div>
                     </div>
                     @foreach($subscribes as $subscribe)
 
@@ -72,6 +75,9 @@
                                     {{ csrf_field() }}
                                     <input type="button" value="unsubscribe" class="btn btn-danger" id="subscribe">
                                 </form>
+                            </div>
+                            <div class="cell">
+                                <p>{{$subscribe->followers}}</p>
                             </div>
                         </div>
                     @endforeach

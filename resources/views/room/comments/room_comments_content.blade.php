@@ -102,6 +102,7 @@
                     type:'POST',
                     datatype:'JSON',
                     success:function(resp){
+                        $(".alert-success").remove();
                         $(event.target).parents().eq(2).remove();
                         $('.limiter').before('<div class="alert alert-success">'
                             +resp.status+

@@ -47,7 +47,7 @@
         <form method="post" action="{{route('subscribe',$category->alias)}}" id="subscribe_form">
             <input type="hidden" value="{{($subscribed)?"1":"0"}}" name="subscribed">
             {{ csrf_field() }}
-            <input type="submit" value="{{($subscribed)?"unsubscribe":"subscribe"}}" id="subscribe">
+            <input type="submit" value="{{(($subscribed)?"unsubscribe":"subscribe")." ".$category->followers}}" id="subscribe">
 
 
         </form>
@@ -65,7 +65,7 @@
                         :&nbsp;<a href="{{route('user',$article->user->id)}}"
                                   style="font-size: 15px">{{$article->user->name}}</a>&ensp;/&ensp;<a
                                 href="{{route('category',$article->category->alias)}}"
-                                style="font-size: 15px">{{$article->category->name}}</a>&ensp;/&ensp;{{$article->created_at}}&ensp;/&ensp;{{count($article->comments)}}
+                                style="font-size: 15px">{{$article->category->name}}</a>&ensp;/&ensp;{{$article->created_at->toFormattedDateString()}}&ensp;/&ensp;{{count($article->comments)}}
                         comments</h4>
                     <p>{{$article->desc}}</p>
                     <a href="{{route('blogshow',$article->alias)}}"><span></span>READ MORE</a>

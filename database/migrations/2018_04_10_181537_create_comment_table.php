@@ -17,6 +17,7 @@ class CreateCommentTable extends Migration
             $table->increments('id');
             $table->text('text',300);
             $table->string('title',50);
+            $table->integer('comment_show')->unsigned()->default(1);
             $table->integer('parent_id')->unsigned()->default(0);
             $table->integer('user_id')->unsigned();
             $table->integer('article_id')->unsigned();

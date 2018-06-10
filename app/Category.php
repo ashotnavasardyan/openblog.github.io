@@ -10,10 +10,10 @@ class Category extends Model
     protected $fillable = ['id','name','alias'];
 
     public function articles(){
-        return $this->hasMany('app\Article','id','category_id');
+        return $this->hasMany(Article::class);
     }
     public function users(){
-        return $this->belongsToMany('app\Users','user_category','category_id','user_id');
+        return $this->belongsToMany('App\User','user_category','category_id','user_id');
     }
 
 }

@@ -21,6 +21,7 @@ Route::group(['prefix'=>'myroom','middleware'=>'auth'],function (){
     Route::post('/changesets/{id}','RoomUpdateSettingsController@index')->name('settings');
     Route::get('/subscribes','RoomSubscribesController@index')->name('subscribes');
     Route::post('/subscribes/{alias}','RoomSubscribesController@unsubscribe')->name('unsubscribe');
+    Route::post('/com/show/','RoomCommentShow@show')->name('comment_show');
 });
 Route::get('/logout',function(){
     Auth::logout();
